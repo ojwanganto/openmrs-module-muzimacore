@@ -160,9 +160,12 @@ public class JsonRegistrationQueueDataHandler implements QueueDataHandler {
 
     private PatientIdentifier getPreferredPatientIdentifierFromPayload(){
         String identifierValue = JsonUtils.readAsString(payload, "$['patient']['patient.medical_record_number']");
-        String identifierTypeName = "National ID";
+        String identifierTypeName = "OpenMRS ID";
 
-        PatientIdentifier preferredPatientIdentifier = createPatientIdentifier(identifierTypeName, identifierValue);
+        // put this to temporarily point to generated ID
+
+
+        PatientIdentifier preferredPatientIdentifier = generateOpenMRSID() ;//createPatientIdentifier(identifierTypeName, identifierValue);
         if (preferredPatientIdentifier != null) {
             preferredPatientIdentifier.setPreferred(true);
             return preferredPatientIdentifier;
@@ -174,8 +177,13 @@ public class JsonRegistrationQueueDataHandler implements QueueDataHandler {
     private List<PatientIdentifier> getOtherPatientIdentifiersFromPayload() {
         List<PatientIdentifier> otherIdentifiers = new ArrayList<PatientIdentifier>();
 
+        /**
+         * OpenMRS ID is temporarily used as preferred for HTS clients. idgen module should be explored for use with new
+         * versions of the app.
+         * This will thus remain disabled for some time
+         */
         // add OpenMRS ID to the list. The system requires this in order to create new patient
-        otherIdentifiers.add(generateOpenMRSID());
+        //otherIdentifiers.add(generateOpenMRSID());
         Object identifierTypeNameObject = JsonUtils.readAsObject(payload, "$['observation']['other_identifier_type']");
         Object identifierValueObject =JsonUtils.readAsObject(payload, "$['observation']['other_identifier_value']");
 
