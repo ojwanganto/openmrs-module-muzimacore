@@ -368,7 +368,7 @@
                 </dependency>
             </dependencies>
             <properties>
-                <openmrs.version>1.8.2</openmrs.version>
+                <openmrs.version>1.9.9</openmrs.version>
             </properties>
         </profile>
     </profiles>
