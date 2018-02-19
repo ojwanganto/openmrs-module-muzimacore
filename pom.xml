@@ -37,7 +37,7 @@
     </modules>
 
     <properties>
-        <openMRSVersion>1.9.7</openMRSVersion>
+        <openMRSVersion>1.9.9</openMRSVersion>
         <webservicesRestVersion>2.1</webservicesRestVersion>
         <idgenVersion>2.6</idgenVersion>
         <jsonPathVersion>0.8.1</jsonPathVersion>
@@ -368,7 +368,7 @@
                 </dependency>
             </dependencies>
             <properties>
-                <openmrs.version>1.8.2</openmrs.version>
+                <openmrs.version>1.9.9</openmrs.version>
             </properties>
         </profile>
     </profiles>
