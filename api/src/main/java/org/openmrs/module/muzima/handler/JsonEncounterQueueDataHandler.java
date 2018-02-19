@@ -104,24 +104,6 @@ public class JsonEncounterQueueDataHandler implements QueueDataHandler {
             if (validate(queueData)) {
                 assignToVisit(encounter);
                 Context.getEncounterService().saveEncounter(encounter);
-/*
-                VisitService vs = Context.getVisitService();
-                List<Visit> visits = vs.getActiveVisitsByPatient(encounter.getPatient());
-                if(!visits.isEmpty()) {
-                    for (Visit visit : visits) {
-                        Date visitDate = visit.getStartDatetime();
-                        Date encounterDate = encounter.getEncounterDatetime();
-                        if ( dateFormat.format(visitDate).equals(dateFormat.format(encounterDate))) {
-                            vs.saveVisit(visit);
-                            setVisitOfEncounter(visit, encounter);
-                            break;
-                        }
-                    }
-                }
-                else{
-                    useNewVisit(encounter);
-                }*/
-
             }
         } catch (Exception e) {
             if (!e.getClass().equals(QueueProcessorException.class))
