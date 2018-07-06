@@ -281,6 +281,7 @@ public class JsonEncounterQueueDataHandler implements QueueDataHandler {
             value = o.toString();
         }
         // find the obs value :)
+
         if (concept.getDatatype().isNumeric()) {
             obs.setValueNumeric(Double.parseDouble(value));
         } else if (concept.getDatatype().isDate()
